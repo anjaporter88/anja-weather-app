@@ -21,6 +21,20 @@ p {
   border: 1px solid lightgray;
 }
 
+.footer {
+  font-size: 12pt;
+  color: gray;
+  text-align: center;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 .icon {
   font-size: 30pt;
   color: yellow;
