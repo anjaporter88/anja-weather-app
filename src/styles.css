@@ -1,38 +1,38 @@
 h1 {
+  font-family: mostra-nuova, sans-serif;
+  font-weight: bold;
   padding: 50px 0 20px 0;
   text-align: center;
 }
 
-p {
-  font-size: 14pt;
-  color: gray;
-  text-align: center;
+.app {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 30%; /* Adjust this value to move the positioned div up and down */
+  width: 70%;
+  font-family: mostra-nuova, sans-serif;
+  font-weight: 400; /* bold would be 700 or bold */
+  font-size: 16pt;
 }
 
-.card {
-  padding: 50px;
+.button {
+  border: 1px solid black;
+  border-radius: 5px;
+  background: yellow;
 }
 
 .city-field {
   border: none;
 }
 
-.col-8 {
-  border: 1px solid lightgray;
-}
-
-.footer {
-  font-size: 12pt;
-  color: gray;
-  text-align: center;
-}
-
-.footer a {
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
+.container {
+  display: inline-block;
+  position: relative;
+  z-index: 3;
 }
 
 .icon {
@@ -40,9 +40,50 @@ p {
   color: yellow;
 }
 
-#convert,
+.image {
+  opacity: 0.8;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+}
+
+.footer {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  color: grey;
+  font-size: 15pt;
+}
+
+.footer a {
+  color: grey;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: black;
+}
+
+#convert {
+  text-align: left;
+  line-height: 0.8;
+  padding: 5px;
+  font-size: 14pt;
+}
+
+#convert a {
+  color: black;
+  text-decoration: none;
+}
+
+.info,
 #date {
   text-align: left;
+  line-height: 0.8;
+  font-size: 18pt;
+  font-weight: normal;
+  line-height: 0.8;
 }
 
 #city,
