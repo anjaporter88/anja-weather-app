@@ -1,6 +1,4 @@
 //displaying day and time
-//how can i get this to display after search submission? tried to move to displayCity function but didn't work
-// have tried to wrap this in a function that is triggered on search submission but it says "can't set innerHTML to null" when it's not?
 let now = new Date();
 let days = [
   "Sunday",
@@ -18,7 +16,6 @@ let dayAndTime = document.querySelector("#date");
 dayAndTime.innerHTML = `${day} ${hours}:${minutes}`;
 
 //displaying city
-// but I wanna display day and time here as well - can't figure out how
 function displayCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input");

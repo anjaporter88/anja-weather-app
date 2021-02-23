@@ -12,7 +12,7 @@ h1 {
   align-items: center;
   left: 10%;
   right: 0;
-  top: 35%; /* Adjust this value to move the positioned div up and down */
+  top: 33%; /* Adjust this value to move the positioned div up and down */
   width: 70%;
   font-family: mostra-nuova, sans-serif;
   font-weight: 400; /* bold would be 700 or bold */
@@ -32,7 +32,8 @@ h1 {
 }
 
 .day,
-.temp {
+.temp,
+.condition {
   font-size: 18pt;
 }
 
