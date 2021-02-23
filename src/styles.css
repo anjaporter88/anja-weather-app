@@ -10,9 +10,9 @@ h1 {
   z-index: 999;
   margin: 0 auto;
   align-items: center;
-  left: 0;
+  left: 10%;
   right: 0;
-  top: 30%; /* Adjust this value to move the positioned div up and down */
+  top: 35%; /* Adjust this value to move the positioned div up and down */
   width: 70%;
   font-family: mostra-nuova, sans-serif;
   font-weight: 400; /* bold would be 700 or bold */
@@ -20,13 +20,9 @@ h1 {
 }
 
 .button {
-  border: 1px solid black;
+  border: 1px solid #c1aec2;
   border-radius: 5px;
-  background: yellow;
-}
-
-.city-field {
-  border: none;
+  background: #c1aec2;
 }
 
 .container {
@@ -71,6 +67,9 @@ h1 {
   line-height: 0.8;
   padding: 5px;
   font-size: 14pt;
+  border: 1px solid #feb38c;
+  border-radius: 5px;
+  background: #feb38c;
 }
 
 #convert a {
