@@ -55,10 +55,13 @@ search2.addEventListener("submit", displayTemp);
 function convertTemp(event) {
   event.preventDefault();
   let temp = document.querySelector("#temp");
+  let unit = document.querySelector("#unit");
   if (Number(temp.innerHTML) === 17) {
     temp.innerHTML = 62.6;
+    unit.innerHTML = "F";
   } else {
     temp.innerHTML = 17;
+    unit.innerHTML = "°C";
   }
 }
 
