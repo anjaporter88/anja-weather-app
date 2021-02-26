@@ -26,14 +26,18 @@ function displayCity(event) {
 let search = document.querySelector("#search-engine");
 search.addEventListener("submit", displayCity);
 
-//displaying temp
+//displaying temp and description
 function showTemp(response) {
+  console.log(response.data);
   let city = response.data.name;
   let cityOutput = document.querySelector("#city");
   cityOutput.innerHTML = city;
   let temp = Math.round(response.data.main.temp);
   let tempOutput = document.querySelector("#temp");
   tempOutput.innerHTML = temp;
+  let conditionToday = response.data.weather[0].description;
+  let conditionElement = document.querySelector("#condition-today");
+  conditionElement.innerHTML = conditionToday;
 }
 
 function displayTemp(event) {
