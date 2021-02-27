@@ -43,8 +43,14 @@ function showAll(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  let conditionToday = response.data.weather[0].description;
   let conditionElement = document.querySelector("#condition-today");
-  conditionElement.innerHTML = response.data.weather[0].description;
+  conditionElement.innerHTML = conditionToday;
+  if (conditionToday === "clear sky") {
+    let iconToday = document.querySelector("#icon-1");
+    iconToday.innerHTML = `http://openweathermap.org/img/wn/01d@2x.png`;
+  }
+
 }
 
 function getInfo(event) {
