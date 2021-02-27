@@ -11,7 +11,13 @@ let days = [
 ];
 let day = days[now.getDay()];
 let hours = now.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
 let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${hours}`;
+}
 let dayAndTime = document.querySelector("#date");
 dayAndTime.innerHTML = `${day} ${hours}:${minutes}`;
 
