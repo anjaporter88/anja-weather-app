@@ -43,14 +43,28 @@ function showAll(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  let conditionToday = response.data.weather[0].description;
   let conditionElement = document.querySelector("#condition-today");
-  conditionElement.innerHTML = conditionToday;
-  if (conditionToday === "clear sky") {
-    let iconToday = document.querySelector("#icon-1");
-    iconToday.innerHTML = `http://openweathermap.org/img/wn/01d@2x.png`;
-  }
-
+  conditionElement.innerHTML = response.data.weather[0].description;
+  let iconElement = document.querySelector("#today-icon");
+    if(response.data.weather[0].icon === "01d" || response.data.weather[0].icon === "01n") {
+      iconElement.setAttribute("class", "fas fa-sun");
+    } else if(response.data.weather[0].icon === "02d" || response.data.weather[0].icon === "02n") {
+      iconElement.setAttribute("class", "fas fa-cloud-sun");
+    } else if(response.data.weather[0].icon === "03d" || response.data.weather[0].icon === "03n") {
+      iconElement.setAttribute("class", "fas fa-cloud");
+    } else if(response.data.weather[0].icon === "04d" || response.data.weather[0].icon === "04n") {
+      iconElement.setAttribute("class", "fas fa-cloud");
+    } else if(response.data.weather[0].icon === "09d" || response.data.weather[0].icon === "09n") {
+      iconElement.setAttribute("class", "fas fa-cloud-showers-heavy");
+    } else if(response.data.weather[0].icon === "10d" || response.data.weather[0].icon === "10n") {
+      iconElement.setAttribute("class", "fas fa-cloud-rain");
+    } else if(response.data.weather[0].icon === "11d" || response.data.weather[0].icon === "11n") {
+      iconElement.setAttribute("class", "fas fa-bolt");
+    } else if(response.data.weather[0].icon === "13d" || response.data.weather[0].icon === "13n") {
+      iconElement.setAttribute("class", "fas fa-snowflake");
+    } else if(response.data.weather[0].icon === "50d" || response.data.weather[0].icon === "50n") {
+      iconElement.setAttribute("class", "fas fa-water");
+    }
 }
 
 function getInfo(event) {
@@ -88,10 +102,10 @@ function showPosition(position) {
   let lon = position.coords.longitude;
   let apiKey = "da345d2f1976e5624d8b30b8f0e7e000";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTemp);
+  axios.get(apiUrl).then(showAll);
 }
 
-function CurrentLoc(response) {
+function CurrentLoc(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
