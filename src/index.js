@@ -34,10 +34,12 @@ search.addEventListener("submit", displayCity);
 
 //displaying all info
 function showAll(response) {
+  celsiusTemp = response.data.main.temp;
+
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
   let tempElement = document.querySelector("#temp");
-  tempElement.innerHTML = Math.round(response.data.main.temp);
+  tempElement.innerHTML = Math.round(celsiusTemp);
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind");
@@ -86,13 +88,15 @@ function convertTemp(event) {
   let unit = document.querySelector("#unit");
   console.log(unit);
   if (unit === "°C") {
-    temp.innerHTML = Math.round(temp * 9 / 5 + 32);
+    temp.innerHTML = Math.round(celsiusTemp * 9 / 5 + 32);
     unit.innerHTML = "°F";
   } else {
-    temp.innerHTML = Math.round(temp - 32 * 5 / 9);
+    temp.innerHTML = Math.round(celsiusTemp);
     unit.innerHTML = "°C";
   }
 }
+
+let celsiusTemp = null;
 
 let convert = document.querySelector("#convert-link");
 convert.addEventListener("click", convertTemp);
