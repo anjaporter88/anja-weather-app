@@ -34,7 +34,6 @@ search.addEventListener("submit", displayCity);
 
 //displaying all info
 function showAll(response) {
-  console.log(response.data);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
   let tempElement = document.querySelector("#temp");
@@ -79,22 +78,24 @@ function getInfo(event) {
 let search2 = document.querySelector("#search-engine");
 search2.addEventListener("submit", getInfo);
 
-// fake conversion
+//real conversion
 function convertTemp(event) {
   event.preventDefault();
   let temp = document.querySelector("#temp");
+  console.log(temp);
   let unit = document.querySelector("#unit");
-  if (Number(temp.innerHTML) === 17) {
-    temp.innerHTML = 63;
+  console.log(unit);
+  if (unit === "°C") {
+    temp.innerHTML = Math.round(temp * 9 / 5 + 32);
     unit.innerHTML = "°F";
   } else {
-    temp.innerHTML = 17;
+    temp.innerHTML = Math.round(temp - 32 * 5 / 9);
     unit.innerHTML = "°C";
   }
 }
 
-let fakeConvert = document.querySelector("#convert-link");
-fakeConvert.addEventListener("click", convertTemp);
+let convert = document.querySelector("#convert-link");
+convert.addEventListener("click", convertTemp);
 
 //current location temp
 function showPosition(position) {
