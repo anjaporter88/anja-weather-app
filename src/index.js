@@ -16,7 +16,7 @@ if (hours < 10) {
 }
 let minutes = now.getMinutes();
 if (minutes < 10) {
-  minutes = `0${hours}`;
+  minutes = `0${minutes}`;
 }
 let dayAndTime = document.querySelector("#date");
 dayAndTime.innerHTML = `${day} ${hours}:${minutes}`;
@@ -84,10 +84,8 @@ search2.addEventListener("submit", getInfo);
 function convertTemp(event) {
   event.preventDefault();
   let temp = document.querySelector("#temp");
-  console.log(temp);
   let unit = document.querySelector("#unit");
-  console.log(unit);
-  if (unit === "°C") {
+  if (unit.innerHTML === "°C") {
     temp.innerHTML = Math.round(celsiusTemp * 9 / 5 + 32);
     unit.innerHTML = "°F";
   } else {
