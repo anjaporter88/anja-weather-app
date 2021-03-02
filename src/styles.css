@@ -32,6 +32,7 @@ h1 {
 }
 
 .day,
+.hour,
 .temp,
 .condition {
   font-size: 18pt;
@@ -71,6 +72,12 @@ h1 {
 
 .footer a:hover {
   color: black;
+}
+
+.forecast {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #city-input {

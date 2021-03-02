@@ -68,6 +68,49 @@ function showAll(response) {
     }
 }
 
+//forecast
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = response.data.list[0];
+  console.log(forecast);
+
+  let iconElement = document.querySelector("#forecast-icon");
+    if(forecast.weather[0].icon === "01d" || forecast.weather[0].icon === "01n") {
+      iconElement.setAttribute("class", "fas fa-sun");
+    } else if(forecast.weather[0].icon === "02d" || forecast.weather[0].icon === "02n") {
+      iconElement.setAttribute("class", "fas fa-cloud-sun");
+    } else if(forecast.weather[0].icon === "03d" || forecast.weather[0].icon === "03n") {
+      iconElement.setAttribute("class", "fas fa-cloud");
+    } else if(forecast.weather[0].icon === "04d" || forecast.weather[0].icon === "04n") {
+      iconElement.setAttribute("class", "fas fa-cloud");
+    } else if(forecast.weather[0].icon === "09d" || forecast.weather[0].icon === "09n") {
+      iconElement.setAttribute("class", "fas fa-cloud-showers-heavy");
+    } else if(forecast.weather[0].icon === "10d" || forecast.weather[0].icon === "10n") {
+      iconElement.setAttribute("class", "fas fa-cloud-rain");
+    } else if(forecast.weather[0].icon === "11d" || forecast.weather[0].icon === "11n") {
+      iconElement.setAttribute("class", "fas fa-bolt");
+    } else if(forecast.weather[0].icon === "13d" || forecast.weather[0].icon === "13n") {
+      iconElement.setAttribute("class", "fas fa-snowflake");
+    } else if(forecast.weather[0].icon === "50d" || forecast.weather[0].icon === "50n") {
+      iconElement.setAttribute("class", "fas fa-water");
+    }
+
+  forecastElement.innerHTML = `
+  <div class="col-2 forecast">
+    <h3 class="hour">
+      Hour
+    </h3>
+    <i class="fas fa-sun" id="forecast-icon">${iconElement}</i>
+    <div class="forecast-temp">
+      ${Math.round(forecast.main.temp)}
+    </div>
+    <div class="forecast-condition">
+        ${forecast.weather.description}
+    </div>
+  </div>
+  `;
+}
+
 function getInfo(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input");
@@ -75,6 +118,9 @@ function getInfo(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric`;
   let apiCall = `${apiUrl}&appid=${apiKey}`;
   axios.get(apiCall).then(showAll);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiCall).then(displayForecast);
 }
 
 let search2 = document.querySelector("#search-engine");
