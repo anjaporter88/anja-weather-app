@@ -26,7 +26,7 @@ function defaultSearch() {
     minutes = `0${minutes}`;
   }
   let dayAndTime = document.querySelector("#date");
-  dayAndTime.innerHTML = `${day} ${hours}:${minutes}`;
+  dayAndTime.innerHTML = `${day}, ${hours}:${minutes}`;
 }
 
 defaultSearch();
