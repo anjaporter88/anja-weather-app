@@ -1,25 +1,35 @@
-//displaying day and time
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hours = now.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
+//default city search with day and time
+function defaultSearch() {
+  let city = "Brighton";
+  let apiKey = "da345d2f1976e5624d8b30b8f0e7e000";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
+  let apiCall = `${apiUrl}&appid=${apiKey}`;
+  axios.get(apiCall).then(showAll);
+
+  let dayAndTime = document.querySelector("#date");
+  let now = new Date();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  dayAndTime.innerHTML = `${day} ${hours}:${minutes}`;
 }
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-let dayAndTime = document.querySelector("#date");
-dayAndTime.innerHTML = `${day} ${hours}:${minutes}`;
+
+defaultSearch();
 
 //displaying city
 function displayCity(event) {
@@ -31,6 +41,7 @@ function displayCity(event) {
 
 let search = document.querySelector("#search-engine");
 search.addEventListener("submit", displayCity);
+
 
 //displaying all info
 function showAll(response) {
