@@ -130,8 +130,8 @@ function getInfo(event) {
   let apiCall = `${apiUrl}&appid=${apiKey}`;
   axios.get(apiCall).then(showAll);
 
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiCall).then(displayForecast);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city.value}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 let search2 = document.querySelector("#search-engine");
