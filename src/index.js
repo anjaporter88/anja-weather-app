@@ -6,7 +6,6 @@ function defaultSearch() {
   let apiCall = `${apiUrl}&appid=${apiKey}`;
   axios.get(apiCall).then(showAll);
 
-  let dayAndTime = document.querySelector("#date");
   let now = new Date();
   let days = [
     "Sunday",
@@ -26,6 +25,7 @@ function defaultSearch() {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+  let dayAndTime = document.querySelector("#date");
   dayAndTime.innerHTML = `${day} ${hours}:${minutes}`;
 }
 
