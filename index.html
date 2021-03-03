@@ -29,7 +29,7 @@
           <form id="search-engine">
             <input type="text" name="city" placeholder="Enter a city..." id="city-input" autofocus="on" />
             <button type="button" class="button" id="current-location"><i class="fas fa-map-marker-alt"></i></button>
-            <input type="submit" name="search" value="Get Forecast" class="button" />
+            <input type="submit" name="search" value="Get 3hr Forecast" class="button" />
           </form>
         </div>
       </div>
@@ -55,6 +55,9 @@
             </a>
           </button>
           <p class="info">
+            feels like: <span id="feels-like"> </span>°C
+          </p>
+          <p class="info">
             humidity: <span id="humidity"> </span>%
           </p>
           <p class="info">
@@ -63,7 +66,11 @@
         </div>
       </div>
       <br />
-      <div class="row" id="forecast"> </div>
+      <div class="row" id="forecast">
+        <em>
+          Get the 3hr forecast by searching for your city and clicking 'Get 3hr Forecast' above...
+        </em>
+        </div>
     
     </div>
 

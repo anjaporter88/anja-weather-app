@@ -65,6 +65,8 @@ function showAll(response) {
   cityElement.innerHTML = response.data.name;
   let tempElement = document.querySelector("#temp");
   tempElement.innerHTML = Math.round(celsiusTemp);
+  let feelsLikeElement = document.querySelector("#feels-like");
+  feelsLikeElement.innerHTML = Math.round(response.data.main.feels_like);
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind");
@@ -96,7 +98,8 @@ function showAll(response) {
 //forecast
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  let forecast = null;
+  forecastElement.innerHTML = null;
+
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
     let iconElement = "";
@@ -146,8 +149,8 @@ function displayForecast(response) {
     ) {
       iconElement = "fas fa-water";
     }
-    
-    forecastElement.innerHTML = `
+
+    forecastElement.innerHTML += `
     <div class="col-2 forecast">
       <h3 class="hour">
         ${formatHours(forecast.dt * 1000)}
