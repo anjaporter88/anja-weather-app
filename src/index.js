@@ -97,57 +97,56 @@ function showAll(response) {
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecast = null;
-
-  let iconElement = "";
-  if (
-    forecast.weather[0].icon === "01d" ||
-    forecast.weather[0].icon === "01n"
-  ) {
-    iconElement = "fas fa-sun";
-  } else if (
-    forecast.weather[0].icon === "02d" ||
-    forecast.weather[0].icon === "02n"
-  ) {
-    iconElement = "fas fa-cloud-sun";
-  } else if (
-    forecast.weather[0].icon === "03d" ||
-    forecast.weather[0].icon === "03n"
-  ) {
-    iconElement = "fas fa-cloud";
-  } else if (
-    forecast.weather[0].icon === "04d" ||
-    forecast.weather[0].icon === "04n"
-  ) {
-    iconElement = "fas fa-cloud";
-  } else if (
-    forecast.weather[0].icon === "09d" ||
-    forecast.weather[0].icon === "09n"
-  ) {
-    iconElement = "fas fa-cloud-showers-heavy";
-  } else if (
-    forecast.weather[0].icon === "10d" ||
-    forecast.weather[0].icon === "10n"
-  ) {
-    iconElement = "fas fa-cloud-rain";
-  } else if (
-    forecast.weather[0].icon === "11d" ||
-    forecast.weather[0].icon === "11n"
-  ) {
-    iconElement = "fas fa-bolt";
-  } else if (
-    forecast.weather[0].icon === "13d" ||
-    forecast.weather[0].icon === "13n"
-  ) {
-    iconElement = "fas fa-snowflake";
-  } else if (
-    forecast.weather[0].icon === "50d" ||
-    forecast.weather[0].icon === "50n"
-  ) {
-    iconElement = "fas fa-water";
-  }
-
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
+    let iconElement = "";
+    if (
+      forecast.weather[0].icon === "01d" ||
+      forecast.weather[0].icon === "01n"
+    ) {
+      iconElement = "fas fa-sun";
+    } else if (
+      forecast.weather[0].icon === "02d" ||
+      forecast.weather[0].icon === "02n"
+    ) {
+      iconElement = "fas fa-cloud-sun";
+    } else if (
+      forecast.weather[0].icon === "03d" ||
+      forecast.weather[0].icon === "03n"
+    ) {
+      iconElement = "fas fa-cloud";
+    } else if (
+      forecast.weather[0].icon === "04d" ||
+      forecast.weather[0].icon === "04n"
+    ) {
+      iconElement = "fas fa-cloud";
+    } else if (
+      forecast.weather[0].icon === "09d" ||
+      forecast.weather[0].icon === "09n"
+    ) {
+      iconElement = "fas fa-cloud-showers-heavy";
+    } else if (
+      forecast.weather[0].icon === "10d" ||
+      forecast.weather[0].icon === "10n"
+    ) {
+      iconElement = "fas fa-cloud-rain";
+    } else if (
+      forecast.weather[0].icon === "11d" ||
+      forecast.weather[0].icon === "11n"
+    ) {
+      iconElement = "fas fa-bolt";
+    } else if (
+      forecast.weather[0].icon === "13d" ||
+      forecast.weather[0].icon === "13n"
+    ) {
+      iconElement = "fas fa-snowflake";
+    } else if (
+      forecast.weather[0].icon === "50d" ||
+      forecast.weather[0].icon === "50n"
+    ) {
+      iconElement = "fas fa-water";
+    }
+    
     forecastElement.innerHTML = `
     <div class="col-2 forecast">
       <h3 class="hour">
