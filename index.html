@@ -29,23 +29,21 @@
           <form id="search-engine">
             <input type="text" name="city" placeholder="Enter a city..." id="city-input" autofocus="on" />
             <button type="button" class="button" id="current-location"><i class="fas fa-map-marker-alt"></i></button>
-            <input type="submit" name="search" value="Get Temperature" class="button" />
+            <input type="submit" name="search" value="Get Forecast" class="button" />
           </form>
         </div>
       </div>
       <br />
 
       <div class="row">
-        <div class="col-4" id="city">
-          City
-          <p class="info" id="date">
-            Day and time
-          </p>
+        <div class="col-4" >
+          <span id="city"> </span>
+          <p class="info" id="date"> </p>
         </div>
         <div class="col-4 icon">
           <i class="fas fa-sun" id="today-icon"> </i>
           <p class="info condition">
-            <span id="condition-today">Cloudy</span>
+            <span id="condition-today"> </span>
           </p>
         </div>
         <div class="col-4" x>
@@ -63,25 +61,6 @@
             windspeed: <span id="wind"> </span>km/h
           </p>
         </div>
-      </div>
-      <br />
-
-      <div class="row" id="forecast">
-
-        <div class="col-2 forecast">
-          Hour
-        </div>
-        <div class="col-2 forecast">
-          Hour
-        </div>
-        <div class="col-2 forecast">
-          Hour
-        </div>
-        <div class="col-2 forecast">
-          Hour
-        </div>
-      </div>
-
       </div>
     </div>
 

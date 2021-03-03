@@ -31,6 +31,20 @@ function defaultSearch() {
 
 defaultSearch();
 
+//formatting hours
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
 //displaying city
 function displayCity(event) {
   event.preventDefault();
@@ -82,44 +96,73 @@ function showAll(response) {
 //forecast
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  let forecast = response.data.list[0];
-  console.log(forecast);
+  let forecast = null;
 
-  let iconElement = document.querySelector("#forecast-icon");
-    if(forecast.weather[0].icon === "01d" || forecast.weather[0].icon === "01n") {
-      iconElement.setAttribute("class", "fas fa-sun");
-    } else if(forecast.weather[0].icon === "02d" || forecast.weather[0].icon === "02n") {
-      iconElement.setAttribute("class", "fas fa-cloud-sun");
-    } else if(forecast.weather[0].icon === "03d" || forecast.weather[0].icon === "03n") {
-      iconElement.setAttribute("class", "fas fa-cloud");
-    } else if(forecast.weather[0].icon === "04d" || forecast.weather[0].icon === "04n") {
-      iconElement.setAttribute("class", "fas fa-cloud");
-    } else if(forecast.weather[0].icon === "09d" || forecast.weather[0].icon === "09n") {
-      iconElement.setAttribute("class", "fas fa-cloud-showers-heavy");
-    } else if(forecast.weather[0].icon === "10d" || forecast.weather[0].icon === "10n") {
-      iconElement.setAttribute("class", "fas fa-cloud-rain");
-    } else if(forecast.weather[0].icon === "11d" || forecast.weather[0].icon === "11n") {
-      iconElement.setAttribute("class", "fas fa-bolt");
-    } else if(forecast.weather[0].icon === "13d" || forecast.weather[0].icon === "13n") {
-      iconElement.setAttribute("class", "fas fa-snowflake");
-    } else if(forecast.weather[0].icon === "50d" || forecast.weather[0].icon === "50n") {
-      iconElement.setAttribute("class", "fas fa-water");
-    }
+  let iconElement = "";
+  if (
+    forecast.weather[0].icon === "01d" ||
+    forecast.weather[0].icon === "01n"
+  ) {
+    iconElement = "fas fa-sun";
+  } else if (
+    forecast.weather[0].icon === "02d" ||
+    forecast.weather[0].icon === "02n"
+  ) {
+    iconElement = "fas fa-cloud-sun";
+  } else if (
+    forecast.weather[0].icon === "03d" ||
+    forecast.weather[0].icon === "03n"
+  ) {
+    iconElement = "fas fa-cloud";
+  } else if (
+    forecast.weather[0].icon === "04d" ||
+    forecast.weather[0].icon === "04n"
+  ) {
+    iconElement = "fas fa-cloud";
+  } else if (
+    forecast.weather[0].icon === "09d" ||
+    forecast.weather[0].icon === "09n"
+  ) {
+    iconElement = "fas fa-cloud-showers-heavy";
+  } else if (
+    forecast.weather[0].icon === "10d" ||
+    forecast.weather[0].icon === "10n"
+  ) {
+    iconElement = "fas fa-cloud-rain";
+  } else if (
+    forecast.weather[0].icon === "11d" ||
+    forecast.weather[0].icon === "11n"
+  ) {
+    iconElement = "fas fa-bolt";
+  } else if (
+    forecast.weather[0].icon === "13d" ||
+    forecast.weather[0].icon === "13n"
+  ) {
+    iconElement = "fas fa-snowflake";
+  } else if (
+    forecast.weather[0].icon === "50d" ||
+    forecast.weather[0].icon === "50n"
+  ) {
+    iconElement = "fas fa-water";
+  }
 
-  forecastElement.innerHTML = `
-  <div class="col-2 forecast">
-    <h3 class="hour">
-      Hour
-    </h3>
-    <i class="fas fa-sun" id="forecast-icon">${iconElement}</i>
-    <div class="forecast-temp">
-      ${Math.round(forecast.main.temp)}
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML = `
+    <div class="col-2 forecast">
+      <h3 class="hour">
+        ${formatHours(forecast.dt * 1000)}
+      </h3>
+      <i class="${iconElement}" id="forecast-icon"></i>
+      <div class="forecast-temp">
+        ${Math.round(forecast.main.temp)}°C
+      </div>
+      <div class="forecast-condition">
+          ${forecast.weather[0].description}
+      </div>
     </div>
-    <div class="forecast-condition">
-        ${forecast.weather.description}
-    </div>
-  </div>
-  `;
+    `;
+  }
 }
 
 function getInfo(event) {
